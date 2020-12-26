@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        if(args != null && args[0].equals("console")) {
+        if(args.length != 0 && args[0].equals("console")) {
             System.out.println("gey");
             Scanner sc = new Scanner(System.in);
             while(true) {
@@ -19,7 +19,31 @@ public class Main {
             }
         }
         else {
-            Grid.getGrid().setVisible(true);
+            setupMenu();
         }
     }
+
+    public static void setupMenu() {
+        JFrame menu = new JFrame();
+        JPanel btns = new JPanel();
+        btns.setLayout(new FlowLayout());
+        btns.setBackground(Color.BLACK);
+        menu.setLocationRelativeTo(null);
+        menu.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        menu.setSize(800,400);
+        Button start = new Button("Start");
+        start.addActionListener((a) -> {
+            menu.dispose();
+            Grid.getGrid().setVisible(true);
+        });
+        Button leaderboards = new Button("Leaderboards");
+        Button close = new Button("Close");
+        btns.add(start);
+        btns.add(leaderboards);
+        btns.add(close);
+        btns.setAlignmentY(Component.CENTER_ALIGNMENT);
+        menu.add(btns);
+        menu.setVisible(true);
+    }
+
 }
