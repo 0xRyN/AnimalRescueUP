@@ -3,6 +3,7 @@ import java.awt.*;
 
 public class Grid extends JFrame {
     private static Grid main;
+
     private Case[][] cases;
 
 
@@ -16,7 +17,6 @@ public class Grid extends JFrame {
         }
         this.setSize(800, 800);
         this.setLayout(new GridLayout(8,8));
-        this.setVisible(true);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
@@ -27,5 +27,15 @@ public class Grid extends JFrame {
     public static Grid getGrid() {
         if(main == null) main = new Grid();
         return main;
+    }
+
+    public Case[][] getCases() {
+        return cases;
+    }
+
+    public void swap(int x1, int y1, int x2, int y2) {
+        Case temp = cases[x1][y1];
+        cases[x1][y1] = cases[x2][y2];
+        cases[x2][y2] = temp;
     }
 }

@@ -7,6 +7,7 @@ import java.awt.*;
 public class Case extends JPanel {
     private JButton btn;
     private Color color;
+    private int intColor;
     private final int posX;
     private final int posY;
     private boolean isActive;
@@ -25,16 +26,18 @@ public class Case extends JPanel {
     public void clicked() {
         this.setVisible(false);
         this.isActive = false;
+        this.intColor = 9;
         checkAdjacent();
     }
 
     private void initColor() {
         int i = RandomGen.get(0,4);
+        this.intColor = i;
         switch(i) {
             case 0 -> this.color = new Color(255,0,0);
             case 1 -> this.color = new Color(0,0, 255);
             case 2 -> this.color = new Color(136, 0, 255);
-            case 3 -> this.color = new Color(27, 255, 0);
+            case 3 -> this.color = new Color(255, 119, 0);
             default -> this.color = new Color(0, 0, 0);
         }
     }
@@ -65,13 +68,46 @@ public class Case extends JPanel {
           .
          */
     private void checkAdjacent() {
-        if(this.posX != 7 && Grid.getGrid().getCase(this.posX+1, this.posY).isActive && Grid.getGrid().getCase(this.posX+1, this.posY).getColor().getRGB() == this.color.getRGB()) Grid.getGrid().getCase(this.posX+1, this.posY).clicked();
+        //CLEAR DOWN
+        if(this.posX != 7 && Grid.getGrid().getCase(this.posX+1, this.posY).isActive && Grid.getGrid().getCase(this.posX+1, this.posY).getColor().getRGB() == this.color.getRGB()) {
+            Grid.getGrid().getCase(this.posX + 1, this.posY).clicked();
+        }
+        else {
+        }
         //CLEAR UP
-        if(this.posX != 0 && Grid.getGrid().getCase(this.posX-1, this.posY).isActive && Grid.getGrid().getCase(this.posX-1, this.posY).getColor().getRGB() == this.color.getRGB()) Grid.getGrid().getCase(this.posX-1, this.posY).clicked();
+        if(this.posX != 0 && Grid.getGrid().getCase(this.posX-1, this.posY).isActive && Grid.getGrid().getCase(this.posX-1, this.posY).getColor().getRGB() == this.color.getRGB()) {
+            Grid.getGrid().getCase(this.posX - 1, this.posY).clicked();
+        }
         //CLEAR RIGHT
-        if(this.posY != 7 && Grid.getGrid().getCase(this.posX, this.posY+1).isActive && Grid.getGrid().getCase(this.posX, this.posY+1).getColor().getRGB() == this.color.getRGB()) Grid.getGrid().getCase(this.posX, this.posY+1).clicked();
+        if(this.posY != 7 && Grid.getGrid().getCase(this.posX, this.posY+1).isActive && Grid.getGrid().getCase(this.posX, this.posY+1).getColor().getRGB() == this.color.getRGB()) {
+            Grid.getGrid().getCase(this.posX, this.posY + 1).clicked();
+        }
         //CLEAR LEFT
-        if(this.posY != 0 && Grid.getGrid().getCase(this.posX, this.posY-1).isActive && Grid.getGrid().getCase(this.posX, this.posY-1).getColor().getRGB() == this.color.getRGB()) Grid.getGrid().getCase(this.posX, this.posY-1).clicked();
+        if(this.posY != 0 && Grid.getGrid().getCase(this.posX, this.posY-1).isActive && Grid.getGrid().getCase(this.posX, this.posY-1).getColor().getRGB() == this.color.getRGB()) {
+            Grid.getGrid().getCase(this.posX, this.posY - 1).clicked();
+        }
+    }
+
+    public String toString() {
+        switch(this.intColor) {
+            case 0 -> {
+                return "r";
+            }
+
+            case 1 -> {
+                return "b";
+            }
+
+            case 2 -> {
+                return "v";
+            }
+
+            case 3 -> {
+                return "o";
+            }
+
+        }
+        return "x";
     }
 
     public Color getColor() {
