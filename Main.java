@@ -38,6 +38,9 @@ public class Main {
         });
         Button leaderboards = new Button("Leaderboards");
         Button close = new Button("Close");
+        close.addActionListener((a) -> {
+            menu.dispose();
+        });
         btns.add(start);
         btns.add(leaderboards);
         btns.add(close);
