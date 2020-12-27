@@ -5,6 +5,8 @@ public class Grid extends JFrame {
     private static Grid main;
 
     private Case[][] cases;
+    private Timer t = new Timer(100, e -> rebuild());
+
 
 
     public Grid() {
@@ -42,8 +44,11 @@ public class Grid extends JFrame {
     }
 
     public void startTimer() {
-        Timer t = new Timer(300, e -> rebuild());
         t.start();
+    }
+
+    public void stopTimer() {
+        t.stop();
     }
 
     public void rebuild() {
@@ -60,6 +65,7 @@ public class Grid extends JFrame {
                     }
                 }
             }
+            stopTimer();
         } while(!isSorted);
     }
 }
