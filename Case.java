@@ -5,11 +5,60 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 
 public class Case extends JPanel {
+
+    public JButton getBtn() {
+        return btn;
+    }
+
+    public void setBtn(JButton btn) {
+        this.btn = btn;
+    }
+
+    public int getIntColor() {
+        return intColor;
+    }
+
+    public void setIntColor(int intColor) {
+        this.intColor = intColor;
+    }
+
+    public Color getColor() {
+        return color;
+    }
+
+    public int getPosX() {
+        return posX;
+    }
+
+    public int getPosY() {
+        return posY;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
+    }
+
+    public boolean isActive() {
+        return this.isActive;
+    }
+
+    public void setPosX(int posX) {
+        this.posX = posX;
+    }
+
+    public void setPosY(int posY) {
+        this.posY = posY;
+    }
+
     private JButton btn;
     private Color color;
     private int intColor;
-    private final int posX;
-    private final int posY;
+    private int posX;
+    private int posY;
     private boolean isActive;
 
     public Case(int x, int y) {
@@ -24,9 +73,7 @@ public class Case extends JPanel {
     }
 
     public void clicked() {
-        this.setVisible(false);
         this.isActive = false;
-        this.intColor = 9;
         checkAdjacent();
     }
 
@@ -37,7 +84,7 @@ public class Case extends JPanel {
             case 0 -> this.color = new Color(255,0,0);
             case 1 -> this.color = new Color(0,0, 255);
             case 2 -> this.color = new Color(136, 0, 255);
-            case 3 -> this.color = new Color(255, 119, 0);
+            case 3 -> this.color = new Color(239, 115, 6);
             default -> this.color = new Color(0, 0, 0);
         }
     }
@@ -48,6 +95,7 @@ public class Case extends JPanel {
         this.btn.setContentAreaFilled(false);
         this.btn.setBorderPainted(false);
         this.btn.addActionListener(new ClickEventHandler(this));
+        this.btn.setText(this.color.toString().substring(15));
     }
 
     private void initPanel() {
@@ -58,21 +106,11 @@ public class Case extends JPanel {
         this.isActive = true;
         this.setVisible(true);
     }
-      //Y :  . . . . . . . .
-      //X :
-        /*.
-          .
-          .
-          .
-          .
-          .
-         */
+
     private void checkAdjacent() {
         //CLEAR DOWN
         if(this.posX != 7 && Grid.getGrid().getCase(this.posX+1, this.posY).isActive && Grid.getGrid().getCase(this.posX+1, this.posY).getColor().getRGB() == this.color.getRGB()) {
             Grid.getGrid().getCase(this.posX + 1, this.posY).clicked();
-        }
-        else {
         }
         //CLEAR UP
         if(this.posX != 0 && Grid.getGrid().getCase(this.posX-1, this.posY).isActive && Grid.getGrid().getCase(this.posX-1, this.posY).getColor().getRGB() == this.color.getRGB()) {
@@ -86,6 +124,10 @@ public class Case extends JPanel {
         if(this.posY != 0 && Grid.getGrid().getCase(this.posX, this.posY-1).isActive && Grid.getGrid().getCase(this.posX, this.posY-1).getColor().getRGB() == this.color.getRGB()) {
             Grid.getGrid().getCase(this.posX, this.posY - 1).clicked();
         }
+        this.setColor(Color.WHITE);
+        this.setBackground(Color.WHITE);
+        this.intColor = 9;
+        this.btn.setText(this.color.toString().substring(15));
     }
 
     public String toString() {
@@ -108,17 +150,5 @@ public class Case extends JPanel {
 
         }
         return "x";
-    }
-
-    public Color getColor() {
-        return color;
-    }
-
-    public int getPosX() {
-        return posX;
-    }
-
-    public int getPosY() {
-        return posY;
     }
 }
