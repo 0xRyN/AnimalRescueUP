@@ -36,13 +36,17 @@ public class Main {
             menu.dispose();
             Grid.getGrid().setVisible(true);
         });
-        Button leaderboards = new Button("Leaderboards");
+        Button levelEditor = new Button("Level Editor");
+        levelEditor.addActionListener((a) -> {
+            menu.dispose();
+            LevelEditor t = new LevelEditor();
+        });
         Button close = new Button("Close");
         close.addActionListener((a) -> {
             menu.dispose();
         });
         btns.add(start);
-        btns.add(leaderboards);
+        btns.add(levelEditor);
         btns.add(close);
         btns.setAlignmentY(Component.CENTER_ALIGNMENT);
         menu.add(btns);
