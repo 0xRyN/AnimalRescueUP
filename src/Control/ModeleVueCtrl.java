@@ -17,7 +17,14 @@ import java.util.Scanner;
 
 public class ModeleVueCtrl {
 
-    public static ModeleVueCtrl instance = new ModeleVueCtrl();
+    public static ModeleVueCtrl instance;
+
+    public static ModeleVueCtrl getInstance(int i) {
+        if(instance == null) {
+            instance = new ModeleVueCtrl(i);
+        }
+        return instance;
+    }
 
     public static ModeleVueCtrl getInstance() {
         return instance;
@@ -29,12 +36,13 @@ public class ModeleVueCtrl {
     private  int ligne;
     private  int colonne;
 
-    public ModeleVueCtrl() {
-        this.initialisation();
+    public ModeleVueCtrl(int i) {
+        this.initialisation(i);
     }
 
-    public void initialisation() {
-        this.getFromFiles("partie_02.txt");
+    public void initialisation(int i) {
+        String path = "partie_0" + String.valueOf(i) + ".txt";
+        this.getFromFiles(path);
     }
 
     public void getFromFiles(String path) {
