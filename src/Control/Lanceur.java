@@ -1,5 +1,6 @@
 package Control;
 import Vue.FenetrePrincipale;
+import Vue.LevelEditor;
 import Vue.MenuVue;
 
 public class Lanceur {
@@ -15,7 +16,7 @@ public class Lanceur {
 	}
 
 	public void levelEditor() {
-
+		LevelEditor l = new LevelEditor();
 	}
 
 	/**
