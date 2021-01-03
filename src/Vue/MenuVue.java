@@ -43,6 +43,7 @@ public class MenuVue extends JFrame {
         });
         this.buttons.add(n1);
         this.buttons.add(n2);
+        this.buttons.add(editor);
         this.buttons.add(close);
         for(JButton i : this.buttons) {
             this.getContentPane().add(i);
