@@ -18,6 +18,7 @@ public class Grid extends JFrame {
         this.setLayout(new GridLayout(8,8));
         this.setVisible(true);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        this.setTitle("manissa");
     }
 
     public Case getCase(int i, int j) {
