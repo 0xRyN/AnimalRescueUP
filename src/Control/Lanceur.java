@@ -18,5 +18,5 @@ public class Lanceur {
 		Lanceur L = new Lanceur();
 		L.initialisation();
 	}
-
 }
+

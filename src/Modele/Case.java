@@ -32,6 +32,7 @@ public class Case {
 	}
 
 	public void setEntryGraphique(CaseGraphique caseGraphiqueGraphique) {
+
 	}
 
 	public static void copy(Case c1,  Case c2) {
