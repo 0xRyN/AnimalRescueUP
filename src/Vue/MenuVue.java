@@ -32,6 +32,11 @@ public class MenuVue extends JFrame {
             this.dispose();
             l.loadLevel(2);
         });
+        JButton custom = new JButton("Custom");
+        custom.addActionListener((e) -> {
+            this.dispose();
+            l.loadLevel(9);
+        });
         JButton editor = new JButton("Editeur de Niveaux");
         editor.addActionListener((e) -> {
             this.dispose();
@@ -43,6 +48,7 @@ public class MenuVue extends JFrame {
         });
         this.buttons.add(n1);
         this.buttons.add(n2);
+        this.buttons.add(custom);
         this.buttons.add(editor);
         this.buttons.add(close);
         for(JButton i : this.buttons) {

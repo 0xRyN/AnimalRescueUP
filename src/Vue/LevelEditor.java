@@ -73,14 +73,14 @@ public class LevelEditor extends JFrame {
 
     public void export() {
         try {
-            File custom = new File("custom.txt");
+            File custom = new File("partie_09.txt");
             if (custom.createNewFile()) {
                 System.out.println("Fichier custom crée: " + custom.getName());
             } else {
                 System.out.println("Fichier custom existe.");
             }
 
-            PrintWriter writer = new PrintWriter("custom.txt");
+            PrintWriter writer = new PrintWriter("partie_09.txt");
             writer.println("8 8");
             for (int i = 7; i >= 0; i--) {
                 for (int j = 7; j >= 0; j--) {

@@ -11,8 +11,8 @@ public class CaseGraphique extends JButton {
     private Color color;
     public CaseGraphique(Color color, int posX, int posY) {
         this.color = color;
-        this.setOpaque(true);
-        this.setBorderPainted(false);
+//        this.setOpaque(true);
+//        this.setBorderPainted(false);
         this.setBackground(color);
         this.addActionListener(new LisnnerCntrl(this));
         this.gridPosX = posX;
