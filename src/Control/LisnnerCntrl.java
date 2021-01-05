@@ -1,7 +1,8 @@
-package Vue;
+package Control;
 
 
 import Control.ModeleVueCtrl;
+import Vue.CaseGraphique;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,7 +11,7 @@ public class LisnnerCntrl implements ActionListener {
 
     private CaseGraphique caseGraphique;
 
-    LisnnerCntrl(CaseGraphique caseGraphique) {
+    public LisnnerCntrl(CaseGraphique caseGraphique) {
         this.caseGraphique = caseGraphique;
     }
 
